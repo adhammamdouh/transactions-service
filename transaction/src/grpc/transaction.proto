@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package transaction;
+
+service TransactionService {
+  rpc CreateTransaction (CreateTransactionRequest) returns (CreateTransactionResponse);
+}
+
+message CreateTransactionRequest {
+  int32 processor_id = 1;
+  string type = 2;
+  string data = 3; // JSON string representing transaction data
+}
+
+message CreateTransactionResponse {
+  string id = 1;
+  bool success = 2;
+  string message = 3; // Optional error message if success is false
+}
